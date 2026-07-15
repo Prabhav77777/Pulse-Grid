@@ -208,6 +208,7 @@ export function corsConfig() {
     'http://localhost:3000',    // Alternative dev port
     'http://localhost:3001',    // Same-origin API testing
     'http://127.0.0.1:5173',
+    'https://pulse-grid-zeta.vercel.app',
   ];
 
   // In production, read allowed origins from environment
