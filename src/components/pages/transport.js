@@ -58,14 +58,11 @@ export function renderTransport(container) {
     resultsEl.innerHTML = `<div class="loading-spinner"><div class="spinner"></div></div>`;
 
     try {
-      // Use the chat endpoint with a transport-specific message
+      // Use the dedicated transport advisor endpoint
       const locale = getCurrentLocale();
-      const response = await apiRequest('/chat', {
+      const response = await apiRequest('/transport', {
         method: 'POST',
-        body: JSON.stringify({
-          message: 'What are the best transport options to leave the stadium after the match? Include sustainability and CO2 info.',
-          locale,
-        }),
+        body: { locale },
       });
 
       // Try to parse structured transport options from AI response
