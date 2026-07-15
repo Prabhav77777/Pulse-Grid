@@ -55,6 +55,25 @@ class ApprovalController {
     this.history = [];
 
     ApprovalController.#instance = this;
+
+    // Seed initial mock recommendations on startup for demo visibility
+    this.addRecommendation({
+      title: 'Gate A Ingress Redirect',
+      description: 'High occupancy warning detected near Gate A. Suggest re-routing incoming fans to Gate B to distribute load.',
+      severity: 'high',
+      affectedZones: ['zone-west', 'gate-a', 'gate-b'],
+      suggestedAction: 'Activate digital signage redirecting Gate A traffic to Gate B.',
+      estimatedImpact: 'Reduces Gate A queue length by ~25% and wait time by 8 minutes.'
+    });
+
+    this.addRecommendation({
+      title: 'Concourse S Flow Control',
+      description: 'Peak congestion warning at South Concourse. Suggest implementing one-way pedestrian flow barriers.',
+      severity: 'medium',
+      affectedZones: ['zone-south', 'concourse-s'],
+      suggestedAction: 'Deploy two stewards to establish entry/exit lanes.',
+      estimatedImpact: 'Maintains safe flow speed of 1.2m/s in high-density food court area.'
+    });
   }
 
   /**
@@ -74,7 +93,7 @@ class ApprovalController {
       id,
       createdAt: new Date().toISOString(),
       status: 'pending',
-      recommendation: structuredClone(recommendation),
+      ...structuredClone(recommendation),
       auditEntryId: null,
       decidedBy: null,
       decidedAt: null,
@@ -86,10 +105,10 @@ class ApprovalController {
     const auditEntry = auditLog.addEntry({
       predictionSnapshot: recommendation.predictionSnapshot ?? {},
       aiRecommendation: {
-        type: recommendation.type,
-        message: recommendation.message,
-        priority: recommendation.priority,
-        zone: recommendation.zone,
+        type: recommendation.type || recommendation.title || 'generic',
+        message: recommendation.message || recommendation.description || '',
+        priority: recommendation.priority || recommendation.severity || 'medium',
+        zone: recommendation.zone || (recommendation.affectedZones ? recommendation.affectedZones[0] : 'stadium'),
       },
       humanDecision: 'pending',
     });
