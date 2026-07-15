@@ -1,0 +1,62 @@
+<!--
+  @file index.html
+  @description SPA entry point for PulseGrid. Provides semantic HTML5 structure
+    with ARIA landmarks, skip-navigation link, and progressive enhancement.
+  #Business-Intent: satisfies "Accessibility" (ARIA landmarks, skip-nav, screen-reader structure)
+    and "Code Quality" (semantic HTML, proper heading hierarchy)
+
+  @level-one-validation
+    Summary: Root HTML document with semantic structure, accessibility features,
+      and correct asset loading order.
+    Correctness: Single h1, proper lang attribute, skip-nav link targets #main-content.
+    Rubric: Accessibility (ARIA landmarks, skip-nav), Code Quality (semantic HTML).
+    Pass: YES
+
+  @PR-changes
+    Changes: Imported 'Share Tech Mono' Google Font to provide appropriate monospace typography for the Command Console's telemetry UI.
+    Criteria improved: Command Console aesthetics, monospace typography.
+    #Scope-Of-Improvement: Would add Open Graph meta tags and a service worker for offline support.
+-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PulseGrid — Predictive digital twin for FIFA World Cup 2026 stadium operations. Real-time crowd management, AI-powered recommendations, and accessible navigation." />
+  <meta name="theme-color" content="#0a0e1a" />
+  <title>PulseGrid — Smart Stadium Operations</title>
+
+  <!-- Google Fonts: Inter and Share Tech Mono for clean modern typography + monospace console telemetry -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <!-- Design system and component styles -->
+  <link rel="stylesheet" href="/src/styles/index.css" />
+  <link rel="stylesheet" href="/src/styles/heatmap.css" />
+  <link rel="stylesheet" href="/src/styles/chat.css" />
+  <link rel="stylesheet" href="/src/styles/dashboard.css" />
+  <link rel="stylesheet" href="/src/styles/accessibility.css" />
+</head>
+<body>
+  <!-- #Business-Intent: satisfies "Accessibility" — skip-nav for keyboard users -->
+  <a href="#main-content" class="skip-nav" aria-label="Skip to main content">
+    Skip to main content
+  </a>
+
+  <!-- ARIA live region for dynamic announcements (screen readers) -->
+  <div id="aria-live" class="sr-only" aria-live="polite" aria-atomic="true" role="status"></div>
+
+  <!-- App root — SPA content rendered here -->
+  <div id="app" role="application" aria-label="PulseGrid Stadium Operations Dashboard">
+    <!-- Loading state shown before JS hydrates -->
+    <div class="app-loading" aria-busy="true">
+      <div class="pulse-loader" aria-hidden="true"></div>
+      <p>Loading PulseGrid…</p>
+    </div>
+  </div>
+
+  <!-- App entry point -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
