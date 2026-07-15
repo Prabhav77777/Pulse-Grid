@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://pulse-grid-264i.onrender.com"
+      "destination": "https://pulse-grid-264i.onrender.com/api/:path*"
     },
     {
       "source": "/((?!api/).*)",
