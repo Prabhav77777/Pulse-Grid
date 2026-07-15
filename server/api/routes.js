@@ -259,11 +259,9 @@ router.post(
   sessionManager.requirePermission('generate_report'),
   async (_req, res, next) => {
     try {
-      const auditEntries = auditLog.exportForReport();
-      const summary = createReportSummary(auditEntries, predictions);
-      const llmReport = await generateOpsReport(auditEntries, predictions, incidents);
-      const markdown = formatReportMarkdown(llmReport, summary, incidents);
-      res.json({ report: markdown, summary });
+      const rawEntries = auditLog.entries;
+      const result = await generateOpsReport(rawEntries, predictions, incidents);
+      res.json({ report: result.markdown, summary: result.summary });
     } catch (err) {
       next(err);
     }
