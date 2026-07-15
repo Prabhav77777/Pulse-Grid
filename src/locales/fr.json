@@ -1,0 +1,129 @@
+{
+  "app": {
+    "title": "PulseGrid",
+    "subtitle": "Opérations Intelligentes du Stade",
+    "loading": "Chargement de PulseGrid…"
+  },
+  "nav": {
+    "heatmap": "Carte Thermique",
+    "chat": "Assistant IA",
+    "routing": "Navigation",
+    "dashboard": "Opérations",
+    "transport": "Transport",
+    "report": "Rapports"
+  },
+  "heatmap": {
+    "title": "Carte Thermique en Temps Réel",
+    "subtitle": "Occupation du stade avec prédictions à 15/30 minutes",
+    "legend": "Niveaux de Risque",
+    "green": "Normal",
+    "yellow": "Élevé",
+    "red": "Critique",
+    "zoneLabel": "{{name}} : {{occupancy}}% de capacité",
+    "predictionLabel": "Prédiction {{minutes}}min : {{predicted}}%",
+    "lastUpdated": "Dernière mise à jour : {{time}}",
+    "predictToggle": "Afficher les prédictions",
+    "currentView": "Actuel",
+    "predict15": "15 min",
+    "predict30": "30 min"
+  },
+  "chat": {
+    "title": "Assistant IA",
+    "subtitle": "Posez-moi des questions sur le stade",
+    "placeholder": "Tapez votre question…",
+    "send": "Envoyer",
+    "thinking": "Réflexion en cours…",
+    "welcome": "Bonjour ! Je suis votre assistant de stade IA. Je peux vous aider avec les directions, les installations, l'accessibilité et plus encore. Comment puis-je vous aider aujourd'hui ?",
+    "errorGeneric": "Désolé, je n'ai pas pu traiter votre demande. Veuillez réessayer.",
+    "suggestions": {
+      "directions": "Comment accéder à ma place ?",
+      "food": "Où puis-je trouver de la nourriture ?",
+      "medical": "Où est le poste médical le plus proche ?",
+      "accessibility": "Quels itinéraires accessibles sont disponibles ?"
+    }
+  },
+  "routing": {
+    "title": "Navigation dans le Stade",
+    "subtitle": "Trouvez le meilleur itinéraire vers votre destination",
+    "from": "Point de départ",
+    "to": "Destination",
+    "accessible": "Itinéraire accessible (sans marches)",
+    "findRoute": "Trouver l'Itinéraire",
+    "estimatedTime": "Temps estimé : {{minutes}} minutes",
+    "distance": "Distance : {{distance}}m",
+    "directions": "Indications",
+    "noRoute": "Aucun itinéraire trouvé entre ces emplacements.",
+    "accessibleNoRoute": "Aucun itinéraire accessible disponible. Veuillez demander l'aide du personnel."
+  },
+  "dashboard": {
+    "title": "Tableau de Bord des Opérations",
+    "subtitle": "Recommandations IA nécessitant une approbation humaine",
+    "pending": "En attente",
+    "approved": "Approuvées",
+    "rejected": "Rejetées",
+    "approve": "Approuver",
+    "reject": "Rejeter",
+    "severity": "Sévérité",
+    "high": "Haute",
+    "medium": "Moyenne",
+    "low": "Basse",
+    "affectedZones": "Zones affectées",
+    "suggestedAction": "Action suggérée",
+    "estimatedImpact": "Impact estimé",
+    "decidedBy": "Décidé par",
+    "noRecommendations": "Aucune recommandation en attente",
+    "auditLog": "Journal d'Audit",
+    "staffNotes": "Notes du personnel",
+    "rejectReason": "Raison du rejet",
+    "stats": {
+      "total": "Total des Recommandations",
+      "approvalRate": "Taux d'Approbation",
+      "avgResponse": "Temps de Réponse Moyen",
+      "activeAlerts": "Alertes Actives"
+    }
+  },
+  "transport": {
+    "title": "Conseiller Transport",
+    "subtitle": "Planifiez votre trajet en pensant durabilité",
+    "getAdvice": "Obtenir des Conseils Transport",
+    "mode": "Mode",
+    "time": "Temps Est.",
+    "cost": "Coût Est.",
+    "co2": "Émissions CO₂",
+    "sustainability": "Durabilité",
+    "sustainabilityNote": "Choisissez des options plus vertes pour réduire votre empreinte carbone",
+    "low": "Faible impact",
+    "medium": "Impact moyen",
+    "high": "Fort impact"
+  },
+  "report": {
+    "title": "Rapport d'Opérations",
+    "subtitle": "Analyse post-événement et résumé des incidents",
+    "generate": "Générer le Rapport",
+    "generating": "Génération du rapport…",
+    "download": "Télécharger le Rapport",
+    "noReport": "Aucun rapport généré. Cliquez sur 'Générer le Rapport' après l'événement."
+  },
+  "accessibility": {
+    "highContrast": "Contraste Élevé",
+    "skipNav": "Aller au contenu principal",
+    "languageSelect": "Sélectionner la langue"
+  },
+  "auth": {
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "loginButton": "Se Connecter",
+    "loginError": "Identifiants invalides"
+  },
+  "common": {
+    "close": "Fermer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "loading": "Chargement…",
+    "error": "Une erreur est survenue",
+    "retry": "Réessayer",
+    "noData": "Aucune donnée disponible"
+  }
+}

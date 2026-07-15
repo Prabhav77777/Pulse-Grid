@@ -1,0 +1,129 @@
+{
+  "app": {
+    "title": "PulseGrid",
+    "subtitle": "Operaciones Inteligentes del Estadio",
+    "loading": "Cargando PulseGrid…"
+  },
+  "nav": {
+    "heatmap": "Mapa de Calor",
+    "chat": "Asistente IA",
+    "routing": "Navegación",
+    "dashboard": "Operaciones",
+    "transport": "Transporte",
+    "report": "Informes"
+  },
+  "heatmap": {
+    "title": "Mapa de Calor en Tiempo Real",
+    "subtitle": "Ocupación del estadio con predicciones a 15/30 minutos",
+    "legend": "Niveles de Riesgo",
+    "green": "Normal",
+    "yellow": "Elevado",
+    "red": "Crítico",
+    "zoneLabel": "{{name}}: {{occupancy}}% de capacidad",
+    "predictionLabel": "Predicción {{minutes}}min: {{predicted}}%",
+    "lastUpdated": "Última actualización: {{time}}",
+    "predictToggle": "Mostrar predicciones",
+    "currentView": "Actual",
+    "predict15": "15 min",
+    "predict30": "30 min"
+  },
+  "chat": {
+    "title": "Asistente IA",
+    "subtitle": "Pregúntame sobre el estadio",
+    "placeholder": "Escribe tu pregunta…",
+    "send": "Enviar",
+    "thinking": "Pensando…",
+    "welcome": "¡Hola! Soy tu asistente de estadio con IA. Puedo ayudarte con direcciones, instalaciones, accesibilidad y más. ¿Cómo puedo ayudarte hoy?",
+    "errorGeneric": "Lo siento, no pude procesar tu solicitud. Inténtalo de nuevo.",
+    "suggestions": {
+      "directions": "¿Cómo llego a mi asiento?",
+      "food": "¿Dónde puedo encontrar comida?",
+      "medical": "¿Dónde está la estación médica más cercana?",
+      "accessibility": "¿Qué rutas accesibles hay disponibles?"
+    }
+  },
+  "routing": {
+    "title": "Navegación del Estadio",
+    "subtitle": "Encuentra la mejor ruta a tu destino",
+    "from": "Punto de partida",
+    "to": "Destino",
+    "accessible": "Ruta accesible (sin escalones)",
+    "findRoute": "Buscar Ruta",
+    "estimatedTime": "Tiempo estimado: {{minutes}} minutos",
+    "distance": "Distancia: {{distance}}m",
+    "directions": "Indicaciones",
+    "noRoute": "No se encontró ruta entre estas ubicaciones.",
+    "accessibleNoRoute": "No hay ruta accesible disponible. Por favor pide ayuda al personal."
+  },
+  "dashboard": {
+    "title": "Panel de Operaciones",
+    "subtitle": "Recomendaciones de IA que requieren aprobación humana",
+    "pending": "Pendientes",
+    "approved": "Aprobadas",
+    "rejected": "Rechazadas",
+    "approve": "Aprobar",
+    "reject": "Rechazar",
+    "severity": "Severidad",
+    "high": "Alta",
+    "medium": "Media",
+    "low": "Baja",
+    "affectedZones": "Zonas afectadas",
+    "suggestedAction": "Acción sugerida",
+    "estimatedImpact": "Impacto estimado",
+    "decidedBy": "Decidido por",
+    "noRecommendations": "No hay recomendaciones pendientes",
+    "auditLog": "Registro de Auditoría",
+    "staffNotes": "Notas del personal",
+    "rejectReason": "Razón del rechazo",
+    "stats": {
+      "total": "Total de Recomendaciones",
+      "approvalRate": "Tasa de Aprobación",
+      "avgResponse": "Tiempo Promedio de Respuesta",
+      "activeAlerts": "Alertas Activas"
+    }
+  },
+  "transport": {
+    "title": "Asesor de Transporte",
+    "subtitle": "Planifica tu viaje con sostenibilidad en mente",
+    "getAdvice": "Obtener Consejo de Transporte",
+    "mode": "Modo",
+    "time": "Tiempo Est.",
+    "cost": "Costo Est.",
+    "co2": "Emisiones CO₂",
+    "sustainability": "Sostenibilidad",
+    "sustainabilityNote": "Elige opciones más verdes para reducir tu huella de carbono",
+    "low": "Bajo impacto",
+    "medium": "Impacto medio",
+    "high": "Alto impacto"
+  },
+  "report": {
+    "title": "Informe de Operaciones",
+    "subtitle": "Análisis post-evento y resumen de incidentes",
+    "generate": "Generar Informe",
+    "generating": "Generando informe…",
+    "download": "Descargar Informe",
+    "noReport": "Aún no se ha generado un informe. Haz clic en 'Generar Informe' después del evento."
+  },
+  "accessibility": {
+    "highContrast": "Alto Contraste",
+    "skipNav": "Saltar al contenido principal",
+    "languageSelect": "Seleccionar idioma"
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "loginButton": "Iniciar Sesión",
+    "loginError": "Credenciales inválidas"
+  },
+  "common": {
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "loading": "Cargando…",
+    "error": "Ocurrió un error",
+    "retry": "Reintentar",
+    "noData": "No hay datos disponibles"
+  }
+}

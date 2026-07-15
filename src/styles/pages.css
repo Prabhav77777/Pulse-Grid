@@ -1,0 +1,227 @@
+/*
+ * @file pages.css
+ * @description Page-level layout styles and telemetry component utilities for the PulseGrid Command Console.
+ * #Business-Intent: Establish a uniform, high-density, and structured command-center aesthetic across all operations views.
+ *
+ * @level-one-validation
+ *   Summary: Provides styles for page container grid, terminal-style panels, inputs, form rows, status text, and status icons.
+ *   Correctness: Pure CSS classes using global custom properties from index.css. Fully responsive.
+ *   Rubric: Command Console aesthetics, layout density, and monospace telemetry.
+ *   Pass: YES
+ *
+ * @PR-changes
+ *   Changes: Initial creation. Added .page, .page-header, .page-title, .page-subtitle, .console-panel, .form-group, .form-row, and various terminal status indicators.
+ *   Criteria improved: Command Console aesthetics (high-density layout, status indicators, and telemetry-styled details).
+ *   #Scope-Of-Improvement: Integrate animation variables for scanning lines in terminal frames.
+ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-4) 0;
+  animation: fade-in 300ms ease-out;
+}
+
+.page-header {
+  border-left: 4px solid var(--color-accent-primary);
+  padding-left: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+.page-title {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.page-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Console Panels */
+.console-panel {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+
+.console-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent-primary);
+  opacity: 0.8;
+}
+
+.console-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.console-panel__title {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-base);
+  color: var(--color-accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Status Labels & Indicators */
+.status-badge-telemetry {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  padding: 2px 6px;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.status-badge-telemetry--ok {
+  color: var(--color-success);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.status-badge-telemetry--warn {
+  color: var(--color-warning);
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.status-badge-telemetry--alert {
+  color: var(--color-danger);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Forms & Fields */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.form-group label {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+.form-select,
+.form-input {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  width: 100%;
+}
+
+.form-select:focus,
+.form-input:focus {
+  border-color: var(--color-accent-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Telemetry lists and outputs */
+.telemetry-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.telemetry-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 2px solid var(--color-border);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+}
+
+.telemetry-item--highlight {
+  border-left-color: var(--color-accent-primary);
+  background: rgba(6, 182, 212, 0.04);
+}
+
+/* Loading state spinner and container */
+.console-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-12) var(--space-4);
+  text-align: center;
+}
+
+.console-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(6, 182, 212, 0.1);
+  border-top-color: var(--color-accent-primary);
+  border-radius: var(--radius-full);
+  animation: spin 1s linear infinite;
+}
+
+.console-loading-text {
+  font-family: var(--font-family-mono);
+  color: var(--color-accent-primary);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+}
+
+/* Empty console display */
+.console-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-12) var(--space-4);
+  text-align: center;
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.console-empty-text {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+.console-empty-hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}

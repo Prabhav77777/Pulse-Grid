@@ -1,0 +1,129 @@
+{
+  "app": {
+    "title": "PulseGrid",
+    "subtitle": "Smart Stadium Operations",
+    "loading": "Loading PulseGrid…"
+  },
+  "nav": {
+    "heatmap": "Crowd Heatmap",
+    "chat": "AI Concierge",
+    "routing": "Navigation",
+    "dashboard": "Operations",
+    "transport": "Transport",
+    "report": "Reports"
+  },
+  "heatmap": {
+    "title": "Real-Time Crowd Heatmap",
+    "subtitle": "Live stadium occupancy with 15/30-minute predictions",
+    "legend": "Risk Levels",
+    "green": "Normal",
+    "yellow": "Elevated",
+    "red": "Critical",
+    "zoneLabel": "{{name}}: {{occupancy}}% capacity",
+    "predictionLabel": "Predicted {{minutes}}min: {{predicted}}%",
+    "lastUpdated": "Last updated: {{time}}",
+    "predictToggle": "Show predictions",
+    "currentView": "Current",
+    "predict15": "15 min",
+    "predict30": "30 min"
+  },
+  "chat": {
+    "title": "AI Concierge",
+    "subtitle": "Ask me anything about the stadium",
+    "placeholder": "Type your question…",
+    "send": "Send",
+    "thinking": "Thinking…",
+    "welcome": "Hello! I'm your AI stadium assistant. I can help with directions, facilities, accessibility, and more. How can I help you today?",
+    "errorGeneric": "Sorry, I couldn't process your request. Please try again.",
+    "suggestions": {
+      "directions": "How do I get to my seat?",
+      "food": "Where can I find food?",
+      "medical": "Where is the nearest medical station?",
+      "accessibility": "What accessible routes are available?"
+    }
+  },
+  "routing": {
+    "title": "Stadium Navigation",
+    "subtitle": "Find the best route to your destination",
+    "from": "Starting point",
+    "to": "Destination",
+    "accessible": "Accessible route (step-free)",
+    "findRoute": "Find Route",
+    "estimatedTime": "Estimated time: {{minutes}} minutes",
+    "distance": "Distance: {{distance}}m",
+    "directions": "Directions",
+    "noRoute": "No route found between these locations.",
+    "accessibleNoRoute": "No accessible route available. Please ask staff for assistance."
+  },
+  "dashboard": {
+    "title": "Operations Dashboard",
+    "subtitle": "AI recommendations requiring human approval",
+    "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "approve": "Approve",
+    "reject": "Reject",
+    "severity": "Severity",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "affectedZones": "Affected zones",
+    "suggestedAction": "Suggested action",
+    "estimatedImpact": "Estimated impact",
+    "decidedBy": "Decided by",
+    "noRecommendations": "No pending recommendations",
+    "auditLog": "Audit Log",
+    "staffNotes": "Staff notes",
+    "rejectReason": "Reason for rejection",
+    "stats": {
+      "total": "Total Recommendations",
+      "approvalRate": "Approval Rate",
+      "avgResponse": "Avg Response Time",
+      "activeAlerts": "Active Alerts"
+    }
+  },
+  "transport": {
+    "title": "Transportation Advisor",
+    "subtitle": "Plan your journey with sustainability in mind",
+    "getAdvice": "Get Transport Advice",
+    "mode": "Mode",
+    "time": "Est. Time",
+    "cost": "Est. Cost",
+    "co2": "CO₂ Emissions",
+    "sustainability": "Sustainability",
+    "sustainabilityNote": "Choose greener options to reduce your carbon footprint",
+    "low": "Low impact",
+    "medium": "Medium impact",
+    "high": "High impact"
+  },
+  "report": {
+    "title": "Operations Report",
+    "subtitle": "Post-event analysis and incident summary",
+    "generate": "Generate Report",
+    "generating": "Generating report…",
+    "download": "Download Report",
+    "noReport": "No report generated yet. Click 'Generate Report' after the event."
+  },
+  "accessibility": {
+    "highContrast": "High Contrast",
+    "skipNav": "Skip to main content",
+    "languageSelect": "Select language"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "username": "Username",
+    "password": "Password",
+    "loginButton": "Sign In",
+    "loginError": "Invalid credentials"
+  },
+  "common": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "loading": "Loading…",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "noData": "No data available"
+  }
+}
