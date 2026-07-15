@@ -33,10 +33,17 @@ export async function renderAuthControls(container) {
         <div class="modal-header"><h2 id="staff-login-title" class="modal-title">Staff login</h2></div>
         <form id="staff-login-form" class="modal-body">
           <label class="form-label" for="staff-username">Username</label>
-          <input class="form-input" id="staff-username" name="username" autocomplete="username" required />
+          <input class="form-input" id="staff-username" name="username" autocomplete="username" required style="width: 100%; margin-bottom: var(--space-3); padding: var(--space-2); background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-md); color: var(--color-text-primary);" />
           <label class="form-label" for="staff-password">Password</label>
-          <input class="form-input" id="staff-password" name="password" type="password" autocomplete="current-password" required />
-          <p id="staff-login-error" role="alert" hidden></p>
+          <input class="form-input" id="staff-password" name="password" type="password" autocomplete="current-password" required style="width: 100%; margin-bottom: var(--space-3); padding: var(--space-2); background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-md); color: var(--color-text-primary);" />
+          
+          <div class="demo-credentials" style="margin-bottom: var(--space-4); padding: var(--space-3); background: rgba(56, 189, 248, 0.08); border: 1px dashed rgba(6, 182, 212, 0.4); border-radius: var(--radius-md); font-size: var(--font-size-xs); font-family: var(--font-family-mono); color: var(--color-text-secondary);">
+            <strong style="display: block; margin-bottom: var(--space-2); color: var(--color-accent-primary); font-family: var(--font-family-mono);">DEMO STAFF CREDENTIALS:</strong>
+            <div>User: <span style="color: var(--color-accent-primary);">ops_commander</span></div>
+            <div>Pass: <span style="color: var(--color-accent-primary);">pulse2026!</span></div>
+          </div>
+
+          <p id="staff-login-error" role="alert" style="color: var(--color-risk-red); font-size: var(--font-size-xs); margin-bottom: var(--space-3);" hidden></p>
           <div class="modal-footer"><button class="btn btn-secondary" type="button" id="staff-login-cancel">Cancel</button><button class="btn btn-primary" type="submit">Sign in</button></div>
         </form>
       </section>`;
