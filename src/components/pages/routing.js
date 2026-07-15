@@ -55,7 +55,7 @@ export function renderRouting(container) {
           <label for="route-accessible" class="form-label" style="margin-bottom: 0; cursor: pointer;">${t('routing.accessible')}</label>
         </div>
 
-        <button type="submit" class="btn btn--primary" id="route-submit" style="align-self: flex-start;">${t('routing.findRoute')}</button>
+        <button type="submit" class="btn btn-primary" id="route-submit" style="align-self: flex-start;">${t('routing.findRoute')}</button>
       </form>
 
       <div id="routing-result" class="routing-result" role="region" aria-live="polite" aria-label="Route result" style="margin-top: var(--space-6);"></div>
