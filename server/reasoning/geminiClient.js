@@ -164,7 +164,7 @@ class GeminiClient {
    * @param {object} schema  Expected shape (used for validation logging only).
    * @returns {Promise<object>}
    */
-  async generateJSON(prompt, schema = {}) {
+  async generateJSON(prompt) {
     const jsonPrompt = `${prompt}\n\nIMPORTANT: Respond ONLY with valid JSON. No markdown fences, no extra text.`;
     const raw = await this.generateContent(jsonPrompt, { temperature: 0.2 });
 

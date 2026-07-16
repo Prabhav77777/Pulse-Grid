@@ -29,6 +29,7 @@ import {
   validateRecommendationAction,
 } from './middleware.js';
 import { generalLimiter, chatLimiter, authLimiter } from './rateLimiter.js';
+import { requireCsrf, setCsrfToken } from './csrf.js';
 
 // --- Layer 1: Simulation ---
 import { createStadiumGraph, generateTimeSeriesSnapshots, generateMockIncidents } from '../simulation/mockDataGenerator.js';
@@ -38,7 +39,7 @@ import { findShortestPath, findAccessiblePath } from '../simulation/dijkstra.js'
 // --- Layer 2: Reasoning ---
 import { handleChatMessage } from '../reasoning/conciergeChat.js';
 import { generateRecommendations } from '../reasoning/recommendationGen.js';
-import { generateOpsReport, createReportSummary, formatReportMarkdown } from '../reasoning/reportGenerator.js';
+import { generateOpsReport } from '../reasoning/reportGenerator.js';
 import geminiClient from '../reasoning/geminiClient.js';
 import { buildTransportPrompt } from '../reasoning/promptBuilder.js';
 import { validateTransportResponse } from '../reasoning/responseValidator.js';
@@ -46,7 +47,7 @@ import { validateTransportResponse } from '../reasoning/responseValidator.js';
 // --- Layer 3: Action ---
 import approvalController from '../action/approvalController.js';
 import auditLog from '../action/auditLog.js';
-import sessionManager, { generateMockStaffUsers } from '../action/sessionManager.js';
+import sessionManager, { generateMockStaffUsers, verifyMockPassword } from '../action/sessionManager.js';
 
 /* ====================================================================
  * Shared simulation state
@@ -189,6 +190,7 @@ router.post(
   '/recommendations/:id/approve',
   generalLimiter.middleware(),
   sessionManager.requirePermission('approve'),
+  requireCsrf,
   validateRecommendationAction,
   (req, res) => {
     const { id } = req.params;
@@ -211,6 +213,7 @@ router.post(
   '/recommendations/:id/reject',
   generalLimiter.middleware(),
   sessionManager.requirePermission('reject'),
+  requireCsrf,
   validateRecommendationAction,
   (req, res) => {
     const { id } = req.params;
@@ -257,6 +260,7 @@ router.post(
   '/report/generate',
   generalLimiter.middleware(),
   sessionManager.requirePermission('generate_report'),
+  requireCsrf,
   async (_req, res, next) => {
     try {
       const rawEntries = auditLog.entries;
@@ -359,10 +363,8 @@ router.post(
     if (!username || !password) {
       return res.status(400).json({ error: 'Username and password required' });
     }
-    const user = mockUsers.find(
-      (u) => u.username === username && u.password === password,
-    );
-    if (!user) {
+    const user = mockUsers.find((u) => u.username === username);
+    if (!user || !verifyMockPassword(user, password)) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
     const session = sessionManager.createSession({
@@ -373,8 +375,10 @@ router.post(
     });
     // Signed, httpOnly session cookie; identity is read server-side on protected routes.
     sessionManager.setSessionCookie(res, session.sessionId);
+    const csrfToken = setCsrfToken(res);
     res.json({
       message: 'Authenticated',
+      csrfToken,
       user: { id: user.id, username: user.username, role: user.role },
     });
   },

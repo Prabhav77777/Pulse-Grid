@@ -19,7 +19,6 @@
  *   #Scope-Of-Improvement: Add A* heuristic for even faster queries when coordinates are available.
  */
 
-import { RoutingResultSchema } from './schemas.js';
 
 // ─── Average pedestrian walk speed ──────────────────────────────────────────
 /** Meters per second — average adult walking speed used for ETA calculations */
@@ -245,7 +244,6 @@ export function generateDirections(graph, path) {
   directions.push(`Start at ${_friendlyName(startNode)}.`);
 
   for (let i = 0; i < path.length - 1; i++) {
-    const fromNode = graph.getNode(path[i]);
     const toNode   = graph.getNode(path[i + 1]);
     const edges    = graph.getEdges(path[i]);
     const edge     = edges.find((e) => e.to === path[i + 1]);

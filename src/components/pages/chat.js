@@ -26,14 +26,12 @@ import { sendChatMessage } from '../../utils/api.js';
 import { getCurrentLocale } from '../../utils/i18n.js';
 import { announceToScreenReader } from '../../utils/a11y.js';
 
-let chatHistory = [];
 
 /**
  * Renders the chat page.
  * @param {HTMLElement} container
  */
 export function renderChat(container) {
-  chatHistory = [];
 
   container.innerHTML = `
     <section class="page chat-page" aria-labelledby="chat-title">
@@ -174,5 +172,5 @@ export function renderChat(container) {
  * Cleanup for route teardown.
  */
 export function cleanupChat() {
-  chatHistory = [];
+  // Messages are DOM-scoped and are removed when the route container is replaced.
 }

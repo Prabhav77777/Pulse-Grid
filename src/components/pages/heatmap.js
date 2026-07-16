@@ -21,7 +21,6 @@
 
 import { t } from '../../utils/i18n.js';
 import { getSimulationState, getPredictions } from '../../utils/api.js';
-import { announceToScreenReader } from '../../utils/a11y.js';
 
 let refreshTimer = null;
 

@@ -236,32 +236,46 @@ class SessionManager {
  * @returns {Array<Object>} Array of mock staff user objects
  */
 export function generateMockStaffUsers() {
+  const createDemoUser = ({ password, ...user }) => {
+    const passwordSalt = crypto.randomBytes(16).toString('hex');
+    const passwordHash = crypto.scryptSync(password, passwordSalt, 64).toString('hex');
+    return { ...user, passwordSalt, passwordHash };
+  };
+
   return [
-    {
+    createDemoUser({
       id: 'staff-001',
       username: 'ops_commander',
       password: 'pulse2026!',
       role: 'operations_commander',
       displayName: 'Maria González',
       permissions: ['approve', 'reject', 'view_audit', 'generate_report'],
-    },
-    {
+    }),
+    createDemoUser({
       id: 'staff-002',
       username: 'safety_lead',
       password: 'safe2026!',
       role: 'safety_officer',
       displayName: 'James Chen',
       permissions: ['approve', 'reject', 'view_audit'],
-    },
-    {
+    }),
+    createDemoUser({
       id: 'staff-003',
       username: 'crowd_analyst',
       password: 'crowd2026!',
       role: 'crowd_analyst',
       displayName: 'Aisha Patel',
       permissions: ['view_audit', 'generate_report'],
-    },
+    }),
   ];
+}
+
+/** Constant-time verification for development-only demo accounts. */
+export function verifyMockPassword(user, password) {
+  if (!user || typeof password !== 'string' || !user.passwordHash || !user.passwordSalt) return false;
+  const expected = Buffer.from(user.passwordHash, 'hex');
+  const actual = crypto.scryptSync(password, user.passwordSalt, 64);
+  return expected.length === actual.length && crypto.timingSafeEqual(expected, actual);
 }
 
 // Singleton instance

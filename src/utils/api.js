@@ -122,6 +122,14 @@ export async function apiRequest(endpoint, options = {}) {
     ...options.headers,
   };
 
+  if (typeof document !== 'undefined' && !['GET', 'HEAD', 'OPTIONS'].includes((options.method || 'GET').toUpperCase())) {
+    const csrfToken = document.cookie
+      .split('; ')
+      .find((cookie) => cookie.startsWith('pulsegrid_csrf='))
+      ?.split('=')[1];
+    if (csrfToken) headers['X-CSRF-Token'] = decodeURIComponent(csrfToken);
+  }
+
   // Auto-set JSON content-type for requests with a body
   if (options.body !== undefined && options.body !== null) {
     headers['Content-Type'] = headers['Content-Type'] || 'application/json';

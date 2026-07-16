@@ -29,7 +29,7 @@ import './styles/dashboard.css';
 import './styles/accessibility.css';
 import './styles/pages.css';
 
-import { loadLocale, setLocale } from './utils/i18n.js';
+import { loadLocale } from './utils/i18n.js';
 import { initRouter, registerRoute } from './router.js';
 import { renderHeader } from './components/shared/header.js';
 import { renderLanguageSwitcher } from './components/shared/languageSwitcher.js';

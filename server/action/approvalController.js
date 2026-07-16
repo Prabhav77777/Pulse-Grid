@@ -17,10 +17,12 @@
  *   Pass: YES
  *
  * @PR-changes
- *   Changes: Initial creation.
- *   Criteria improved: Human-in-the-loop safety, audit trail linkage.
- *   #Scope-Of-Improvement: Add role-based access control (RBAC) to restrict
- *     approve/reject to authorized staff roles only.
+ *   Changes: Route-layer permission checks now enforce approve/reject access
+ *     before this controller is reached; this class remains responsible only
+ *     for deterministic recommendation state transitions and audit linkage.
+ *   Criteria improved: Human-in-the-loop safety, audit trail linkage, RBAC.
+ *   #Scope-Of-Improvement: Replace the demo permission array with centrally
+ *     managed role-to-permission policy from the production identity provider.
  */
 
 import crypto from 'node:crypto';

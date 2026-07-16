@@ -25,10 +25,10 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 
 // Layer 1 imports
-import { GateStateSchema, ZoneStateSchema, EdgeStateSchema, PredictionResultSchema, validateSchema } from '../server/simulation/schemas.js';
+import { GateStateSchema, ZoneStateSchema, validateSchema } from '../server/simulation/schemas.js';
 import { StadiumGraph } from '../server/simulation/graph.js';
 import { MinPriorityQueue, findShortestPath, findAccessiblePath, generateDirections } from '../server/simulation/dijkstra.js';
-import { calculateRateOfChange, predictFutureLoad, classifyRiskLevel, generatePredictions, identifyBottlenecks, summarizeForLLM } from '../server/simulation/crowdPredictor.js';
+import { predictFutureLoad, classifyRiskLevel, generatePredictions, identifyBottlenecks, summarizeForLLM } from '../server/simulation/crowdPredictor.js';
 import { createStadiumGraph, generateArrivalCurve, generateTimeSeriesSnapshots, generateMockIncidents } from '../server/simulation/mockDataGenerator.js';
 import { SessionManager } from '../server/action/sessionManager.js';
 import { RateLimiter } from '../server/api/rateLimiter.js';

@@ -140,7 +140,7 @@ export function validateRecommendationAction(req, res, next) {
  * @param {Object} res
  * @param {Function} next
  */
-export function errorHandler(err, req, res, next) {
+export function errorHandler(err, req, res, _next) {
   const statusCode = err.statusCode || err.status || 500;
   const isProduction = process.env.NODE_ENV === 'production';
 
