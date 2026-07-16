@@ -26,5 +26,17 @@ export default defineConfig({
     clearMocks: true,
     restoreMocks: true,
     testTimeout: 5000,
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'lcov'],
+      include: [
+        'server/simulation/**/*.js',
+        'server/reasoning/**/*.js',
+        'server/action/**/*.js',
+        'server/api/**/*.js',
+        'src/utils/**/*.js',
+      ],
+      exclude: ['server/index.js', 'server/api/routes.js'],
+    },
   },
 });
