@@ -30,8 +30,18 @@ import { fileURLToPath } from 'url';
 import { corsConfig, requestLogger, errorHandler } from './api/middleware.js';
 import sessionManager from './action/sessionManager.js';
 import apiRouter, { refreshSimulation, triggerRecommendationCycle } from './api/routes.js';
+import {
+  GRACEFUL_SHUTDOWN_TIMEOUT_MS,
+  HTTP_PORT,
+  JSON_BODY_LIMIT,
+  RECOMMENDATION_REFRESH_INTERVAL_MS,
+  SESSION_CLEANUP_INTERVAL_MS,
+  SIMULATION_REFRESH_INTERVAL_MS,
+} from './config/constants.js';
+import { startRecurringTask } from './config/timer.js';
+import logger from './utils/logger.js';
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || HTTP_PORT;
 const app = express();
 
 /* ────────────────────────────────────────────────────────────────────
@@ -42,7 +52,7 @@ const app = express();
 app.use(corsConfig());
 
 // Body parsing — @risk-area: limit payload size to prevent DoS
-app.use(express.json({ limit: '1mb' }));
+app.use(express.json({ limit: JSON_BODY_LIMIT }));
 
 // Signed cookies — used by session middleware
 // #Scope-Of-Improvement: rotate COOKIE_SECRET via env in production
@@ -103,25 +113,22 @@ app.use(errorHandler);
  * ──────────────────────────────────────────────────────────────────── */
 
 // Refresh simulation data every 30 s
-const SIM_REFRESH_INTERVAL = 30_000;
-const simTimer = setInterval(() => {
+const simTimer = startRecurringTask(() => {
   refreshSimulation();
-  console.log('[PulseGrid] Simulation state refreshed.');
-}, SIM_REFRESH_INTERVAL);
+  logger.debug('Simulation state refreshed.');
+}, SIMULATION_REFRESH_INTERVAL_MS);
 
 // Generate AI recommendations every 60 s
 // #Business-Intent: GenAI Integration — continuous AI advisory loop
-const REC_INTERVAL = 60_000;
-const recTimer = setInterval(async () => {
+const recTimer = startRecurringTask(async () => {
   await triggerRecommendationCycle();
-  console.log('[PulseGrid] Recommendation cycle completed.');
-}, REC_INTERVAL);
+  logger.debug('Recommendation cycle completed.');
+}, RECOMMENDATION_REFRESH_INTERVAL_MS);
 
 // Clean expired sessions every 5 min
-const SESSION_CLEANUP_INTERVAL = 5 * 60_000;
-const sessionTimer = setInterval(() => {
+const sessionTimer = startRecurringTask(() => {
   sessionManager.cleanExpiredSessions();
-}, SESSION_CLEANUP_INTERVAL);
+}, SESSION_CLEANUP_INTERVAL_MS);
 
 /* ────────────────────────────────────────────────────────────────────
  * Start Server
@@ -159,7 +166,7 @@ function gracefulShutdown(signal) {
   setTimeout(() => {
     console.error('[PulseGrid] Forced exit after timeout.');
     process.exit(1);
-  }, 5000);
+  }, GRACEFUL_SHUTDOWN_TIMEOUT_MS);
 }
 
 process.on('SIGINT', () => gracefulShutdown('SIGINT'));
