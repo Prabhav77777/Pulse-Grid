@@ -22,8 +22,15 @@ export function startRecurringTask(task, intervalMs) {
 /** Starts all non-request operational refresh tasks. */
 export function startOperationalTimers({ refreshSimulation, triggerRecommendationCycle, cleanExpiredSessions }) {
   return [
-    startRecurringTask(refreshSimulation, 30_000),
-    startRecurringTask(triggerRecommendationCycle, 60_000),
-    startRecurringTask(cleanExpiredSessions, 300_000),
+    startRecurringTask(refreshSimulation, SIMULATION_REFRESH_INTERVAL_MS),
+    startRecurringTask(triggerRecommendationCycle, RECOMMENDATION_REFRESH_INTERVAL_MS),
+    startRecurringTask(cleanExpiredSessions, SESSION_CLEANUP_INTERVAL_MS),
   ];
 }
+import {
+  RECOMMENDATION_REFRESH_INTERVAL_MS,
+  SESSION_CLEANUP_INTERVAL_MS,
+  SIMULATION_REFRESH_INTERVAL_MS,
+} from './constants.js';
+
+/** Coordinates non-request background maintenance tasks. */
