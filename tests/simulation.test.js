@@ -31,7 +31,7 @@ import { MinPriorityQueue, findShortestPath, findAccessiblePath, generateDirecti
 import { predictFutureLoad, classifyRiskLevel, generatePredictions, identifyBottlenecks, summarizeForLLM } from '../server/simulation/crowdPredictor.js';
 import { createStadiumGraph, generateArrivalCurve, generateTimeSeriesSnapshots, generateMockIncidents } from '../server/simulation/mockDataGenerator.js';
 import { SessionManager } from '../server/action/sessionManager.js';
-import { RateLimiter } from '../server/api/rateLimiter.js';
+import { RateLimiter } from '../server/api/middleware/rateLimiter.js';
 
 /* ════════════════════════════════════════════════════════════════════
  * §1  SCHEMA VALIDATION

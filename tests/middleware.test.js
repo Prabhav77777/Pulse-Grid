@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { validateChatInput, validateLocale, validateRecommendationAction } from '../server/api/middleware.js';
+import { validateChatInput, validateLocale, validateRecommendationAction } from '../server/api/middleware/validation.js';
 
 function response() {
   return { status: vi.fn().mockReturnThis(), json: vi.fn() };
